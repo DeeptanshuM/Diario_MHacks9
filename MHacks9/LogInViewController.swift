@@ -16,24 +16,27 @@ class LogInViewController: UIViewController {
     super.viewDidLoad()
     // Do any additional setup after loading the view, typically from a nib.
     if let accessToken = AccessToken.current {
-      // User is logged in, use 'accessToken' here.
       //what segues do we want here???
+      
     }
   }
   
+  //MARK: Properties
+  
+  @IBOutlet weak var signInButton: UIButton!
+  
+  //MARK: Actions
   @IBAction func signInClicked(_ sender: UIButton) {
-    print("Clicked")
-    
-    
+    //print("Clicked")
+  
     //You typically should check if AccessToken.current already contains the permissions you need before asking to reduce unnecessary app switching
-    
-    
+    //print("User must sign in")
     let loginManager = LoginManager()
     
     loginManager.logIn([ .publicProfile, .userFriends, .email], viewController: self) {
       
       loginResult in
-  
+      
       
       switch loginResult {
         
@@ -44,7 +47,7 @@ class LogInViewController: UIViewController {
         
       case .cancelled:
         print("User cancelled login.")
-       
+        
         
       case .success(let grantedPermissions, let declinedPermissions, let accessToken):
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
@@ -55,26 +58,46 @@ class LogInViewController: UIViewController {
             // ...
             return
           }
-          
+          print("Logged in!")
+          self.printFirebaseUsers()
         }
-        print("Logged in!")
       }
     }
     
   }
   
+  public func logOut(){
+    let firebaseAuth = FIRAuth.auth()
+    
+    do {
+      try FIRAuth.auth()?.signOut()
+    } catch let signOutError as NSError {
+      print ("Error signing out: %@", signOutError)
+    }
+    
+    try! FIRAuth.auth()!.signOut()
+    let loginManager = LoginManager()
+    loginManager.logOut() // this is an instance function
+    
+    print("signed out")
+    printFirebaseUsers()
+    
+  }
   
-  //Code for sign out: How do we implement it?
-  //let firebaseAuth = FIRAuth.auth()
-  //do {
-  //try firebaseAuth?.signOut()
-  //} catch let signOutError as NSError {
-  //print ("Error signing out: %@", signOutError)
-  //}
+
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
   
+  //MARK: Private
   
+  //for debugging
+  func printFirebaseUsers(){
+    if let user = FIRAuth.auth()?.currentUser {
+      print("User signed in")
+    } else {
+      print("User not signed in")
+    }
+  }
 }
