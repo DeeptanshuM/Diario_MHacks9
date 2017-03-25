@@ -13,6 +13,7 @@
 		6EE9647C1E86EFE700B41E5E /* CaptureViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9647B1E86EFE700B41E5E /* CaptureViewController.swift */; };
 		6EE9647E1E86F0EB00B41E5E /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9647D1E86F0EB00B41E5E /* ProfileViewController.swift */; };
 		6EE964801E86F13400B41E5E /* DetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6EE9647F1E86F13400B41E5E /* DetailViewController.swift */; };
+		AE3112761E87012400864E6A /* Facebook.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE3112751E87012400864E6A /* Facebook.swift */; };
 		AE91A3691E862AC700E460D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91A3681E862AC700E460D6 /* AppDelegate.swift */; };
 		AE91A36B1E862AC700E460D6 /* LogInViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91A36A1E862AC700E460D6 /* LogInViewController.swift */; };
 		AE91A36E1E862AC700E460D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE91A36C1E862AC700E460D6 /* Main.storyboard */; };
@@ -31,6 +32,7 @@
 		6EE9647D1E86F0EB00B41E5E /* ProfileViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
 		6EE9647F1E86F13400B41E5E /* DetailViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DetailViewController.swift; sourceTree = "<group>"; };
 		9BB91911C36694075D3B2804 /* Pods_MHacks9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MHacks9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		AE3112751E87012400864E6A /* Facebook.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facebook.swift; sourceTree = "<group>"; };
 		AE91A3651E862AC700E460D6 /* MHacks9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHacks9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE91A3681E862AC700E460D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE91A36A1E862AC700E460D6 /* LogInViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LogInViewController.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 		6E482F011E86EC8B000A6836 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				AE3112751E87012400864E6A /* Facebook.swift */,
 			);
 			name = Model;
 			sourceTree = "<group>";
@@ -262,6 +265,7 @@
 				6EE9647C1E86EFE700B41E5E /* CaptureViewController.swift in Sources */,
 				AE91A36B1E862AC700E460D6 /* LogInViewController.swift in Sources */,
 				AE91A3691E862AC700E460D6 /* AppDelegate.swift in Sources */,
+				AE3112761E87012400864E6A /* Facebook.swift in Sources */,
 				6EE9647E1E86F0EB00B41E5E /* ProfileViewController.swift in Sources */,
 				AE91A3711E862AC700E460D6 /* MHacks9.xcdatamodeld in Sources */,
 				6EE9647A1E86EFAF00B41E5E /* RemindersTableViewCell.swift in Sources */,

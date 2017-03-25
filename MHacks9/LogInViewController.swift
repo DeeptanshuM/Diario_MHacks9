@@ -24,54 +24,22 @@ class LogInViewController: UIViewController {
   
   //MARK: Properties
   
-  @IBOutlet weak var signInButton: UIButton!
+  //@IBOutlet weak var signInButton: UIButton!
   
   //MARK: Actions
   @IBAction func signInClicked(_ sender: UIButton) {
-    //print("Clicked")
+    print("Clicked")
   
     //You typically should check if AccessToken.current already contains the permissions you need before asking to reduce unnecessary app switching
     //print("User must sign in")
-    let loginManager = LoginManager()
-    
-    loginManager.logIn([ .publicProfile, .userFriends, .email], viewController: self) {
-      
-      loginResult in
-      
-      
-      switch loginResult {
-        
-        
-      case .failed(let error):
-        print(error)
-        
-        
-      case .cancelled:
-        print("User cancelled login.")
-        
-        
-      case .success(let grantedPermissions, let declinedPermissions, let accessToken):
-         self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
-        let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
-        
-        FIRAuth.auth()?.signIn(with: credential) { (user, error) in
-          // ...
-          if let error = error {
-            // ...
-            return
-          }
-       
-
-          print("Logged in!")
-          self.printFirebaseUsers()
-
-        }
-      }
-    }
-    
+    Facebook.sharedInstance.Login(success: {
+      self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
+    }, failure: { (error) in
+        print(error.localizedDescription)
+    })
   }
   
-  public func logOut(){
+ /* public func logOut(){
     let firebaseAuth = FIRAuth.auth()
     
     do {
@@ -88,15 +56,15 @@ class LogInViewController: UIViewController {
     printFirebaseUsers()
     
   }
-  
+  */
 
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
   }
-  
+  /*
   //MARK: Private
-  
+  */
   //for debugging
   func printFirebaseUsers(){
     if let user = FIRAuth.auth()?.currentUser {
