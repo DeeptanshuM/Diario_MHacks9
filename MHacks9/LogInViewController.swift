@@ -18,6 +18,7 @@ class LogInViewController: UIViewController {
     if let accessToken = AccessToken.current {
       //what segues do we want here???
       
+        //performSegue(withIdentifier: "tabBarSegue", sender: Any?.self)
     }
   }
   
@@ -50,6 +51,7 @@ class LogInViewController: UIViewController {
         
         
       case .success(let grantedPermissions, let declinedPermissions, let accessToken):
+         self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
         
         FIRAuth.auth()?.signIn(with: credential) { (user, error) in
@@ -58,8 +60,11 @@ class LogInViewController: UIViewController {
             // ...
             return
           }
+       
+
           print("Logged in!")
           self.printFirebaseUsers()
+
         }
       }
     }
