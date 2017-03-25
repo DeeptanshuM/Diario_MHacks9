@@ -14,5 +14,7 @@ pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
 
+pod 'SwiftyJSON'
+
 target 'MHacks9' do
 end

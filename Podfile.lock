@@ -88,6 +88,7 @@ PODS:
   - GoogleToolboxForMac/NSString+URLArguments (2.1.1)
   - GTMSessionFetcher/Core (1.1.9)
   - Protobuf (3.2.0)
+  - SwiftyJSON (3.1.4)
 
 DEPENDENCIES:
   - CameraManager (~> 3.1)
@@ -100,6 +101,7 @@ DEPENDENCIES:
   - Firebase/Database
   - Firebase/RemoteConfig
   - Firebase/Storage
+  - SwiftyJSON
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
@@ -123,7 +125,8 @@ SPEC CHECKSUMS:
   GoogleToolboxForMac: 8e329f1b599f2512c6b10676d45736bcc2cbbeb0
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
+  SwiftyJSON: c2842d878f95482ffceec5709abc3d05680c0220
 
-PODFILE CHECKSUM: 0cb8c0aa639bf31fabc264bcb3d9bcecf462201e
+PODFILE CHECKSUM: 6e4ed9187db72ff857cf4af465fcb0d416c53787
 
-COCOAPODS: 1.2.0
+COCOAPODS: 1.1.1
