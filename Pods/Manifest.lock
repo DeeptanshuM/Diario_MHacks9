@@ -5,6 +5,7 @@ PODS:
   - Bolts/AppLinks (1.8.4):
     - Bolts/Tasks
   - Bolts/Tasks (1.8.4)
+  - CameraManager (3.1.1)
   - FacebookCore (0.2.0):
     - Bolts (~> 1.8)
     - FBSDKCoreKit (~> 4.15)
@@ -89,6 +90,7 @@ PODS:
   - Protobuf (3.2.0)
 
 DEPENDENCIES:
+  - CameraManager (~> 3.1)
   - FacebookCore
   - FacebookLogin
   - FacebookShare
@@ -101,6 +103,7 @@ DEPENDENCIES:
 
 SPEC CHECKSUMS:
   Bolts: 8a7995239dbe724f9cba2248b766d48b7ebdd322
+  CameraManager: e6236452ec87950dde1fd70a8bed938336bb8901
   FacebookCore: 2cb3f0fbff218e9d3119cec84bae983b232412de
   FacebookLogin: c9d606504735780a9e3002465a615512e0a691a5
   FacebookShare: 8e9ee8ea06505e6a1d3d719b0cc63e840fb8aaeb
@@ -121,6 +124,6 @@ SPEC CHECKSUMS:
   GTMSessionFetcher: 5c046c76a1f859bc9c187e918f18e4fc7bb57b5e
   Protobuf: 745f59e122e5de98d4d7ef291e264a0eef80f58e
 
-PODFILE CHECKSUM: 423b974381b7cadf6cde01ad11a06991d56a6f45
+PODFILE CHECKSUM: 0cb8c0aa639bf31fabc264bcb3d9bcecf462201e
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0

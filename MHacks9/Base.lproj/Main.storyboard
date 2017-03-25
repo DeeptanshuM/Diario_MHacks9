@@ -22,8 +22,9 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NHF-bb-7TX">
-                                <rect key="frame" x="107" y="180" width="73" height="30"/>
+                                <rect key="frame" x="120" y="311" width="134" height="45"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="26"/>
                                 <state key="normal" title="Sign in"/>
                                 <connections>
                                     <action selector="signInClicked:" destination="BYZ-38-t0r" eventType="touchUpInside" id="pDA-4p-SnA"/>
@@ -39,6 +40,24 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="36" y="107.49625187406298"/>
+        </scene>
+        <!--Reminders View Controller-->
+        <scene sceneID="WAM-Cn-Hoh">
+            <objects>
+                <viewController storyboardIdentifier="reminder" id="URs-Y3-lya" customClass="RemindersViewController" customModule="MHacks9" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="isV-Z1-HYU"/>
+                        <viewControllerLayoutGuide type="bottom" id="T5n-k6-XIP"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="ksB-zx-P2B">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="8UH-eS-FJG" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="777" y="107"/>
         </scene>
     </scenes>
 </document>

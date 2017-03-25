@@ -1,6 +1,7 @@
 use_frameworks!
 platform :ios, ‘9.0’
 
+pod ‘CameraManager’, ‘~> 3.1’
 pod 'Firebase/AdMob'
 pod 'Firebase/Auth'
 pod 'Firebase/Crash'
