@@ -14,6 +14,7 @@
 		AE91A3711E862AC700E460D6 /* MHacks9.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = AE91A36F1E862AC700E460D6 /* MHacks9.xcdatamodeld */; };
 		AE91A3731E862AC700E460D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE91A3721E862AC700E460D6 /* Assets.xcassets */; };
 		AE91A3761E862AC700E460D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE91A3741E862AC700E460D6 /* LaunchScreen.storyboard */; };
+		AEF7314D1E8633930034CC8B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = AEF7314C1E8633930034CC8B /* GoogleService-Info.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		AE91A3721E862AC700E460D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AE91A3751E862AC700E460D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE91A3771E862AC700E460D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		AEF7314C1E8633930034CC8B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -86,6 +88,7 @@
 				AE91A3721E862AC700E460D6 /* Assets.xcassets */,
 				AE91A3741E862AC700E460D6 /* LaunchScreen.storyboard */,
 				AE91A3771E862AC700E460D6 /* Info.plist */,
+				AEF7314C1E8633930034CC8B /* GoogleService-Info.plist */,
 				AE91A36F1E862AC700E460D6 /* MHacks9.xcdatamodeld */,
 			);
 			path = MHacks9;
@@ -155,6 +158,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE91A3761E862AC700E460D6 /* LaunchScreen.storyboard in Resources */,
+				AEF7314D1E8633930034CC8B /* GoogleService-Info.plist in Resources */,
 				AE91A3731E862AC700E460D6 /* Assets.xcassets in Resources */,
 				AE91A36E1E862AC700E460D6 /* Main.storyboard in Resources */,
 			);
@@ -381,6 +385,7 @@
 				AE91A37C1E862AC700E460D6 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 
