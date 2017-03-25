@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  LogInViewController.swift
 //  MHacks9
 //
 //  Created by Deetpanshu Malik on 3/25/17.
@@ -10,7 +10,7 @@ import FacebookCore
 import FacebookLogin
 import Firebase
 
-class ViewController: UIViewController {
+class LogInViewController: UIViewController {
   
   override func viewDidLoad() {
     super.viewDidLoad()
