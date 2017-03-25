@@ -18,6 +18,7 @@ class LogInViewController: UIViewController {
     if let accessToken = AccessToken.current {
       //what segues do we want here???
       
+        performSegue(withIdentifier: "tabBarSegue", sender: Any?.self)
     }
   }
   
