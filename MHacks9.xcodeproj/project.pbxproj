@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		10756AA1732A0B874C6BA044 /* Pods_MHacks9.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 9BB91911C36694075D3B2804 /* Pods_MHacks9.framework */; };
 		AE91A3691E862AC700E460D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91A3681E862AC700E460D6 /* AppDelegate.swift */; };
 		AE91A36B1E862AC700E460D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE91A36A1E862AC700E460D6 /* ViewController.swift */; };
 		AE91A36E1E862AC700E460D6 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE91A36C1E862AC700E460D6 /* Main.storyboard */; };
@@ -16,6 +17,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4053FA264F1C2F3D59323A3C /* Pods-MHacks9.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHacks9.release.xcconfig"; path = "Pods/Target Support Files/Pods-MHacks9/Pods-MHacks9.release.xcconfig"; sourceTree = "<group>"; };
+		4ED917E6A09795A240104D4F /* Pods-MHacks9.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-MHacks9.debug.xcconfig"; path = "Pods/Target Support Files/Pods-MHacks9/Pods-MHacks9.debug.xcconfig"; sourceTree = "<group>"; };
+		9BB91911C36694075D3B2804 /* Pods_MHacks9.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_MHacks9.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE91A3651E862AC700E460D6 /* MHacks9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MHacks9.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AE91A3681E862AC700E460D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		AE91A36A1E862AC700E460D6 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -31,17 +35,37 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				10756AA1732A0B874C6BA044 /* Pods_MHacks9.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1DDB4959EA7229D06540D8BE /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				9BB91911C36694075D3B2804 /* Pods_MHacks9.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		7ADCC73597A21E5BCEB5DE1D /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				4ED917E6A09795A240104D4F /* Pods-MHacks9.debug.xcconfig */,
+				4053FA264F1C2F3D59323A3C /* Pods-MHacks9.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 		AE91A35C1E862AC600E460D6 = {
 			isa = PBXGroup;
 			children = (
 				AE91A3671E862AC700E460D6 /* MHacks9 */,
 				AE91A3661E862AC700E460D6 /* Products */,
+				7ADCC73597A21E5BCEB5DE1D /* Pods */,
+				1DDB4959EA7229D06540D8BE /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -74,9 +98,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = AE91A37A1E862AC700E460D6 /* Build configuration list for PBXNativeTarget "MHacks9" */;
 			buildPhases = (
+				26A0F72040F3426737A76971 /* [CP] Check Pods Manifest.lock */,
 				AE91A3611E862AC600E460D6 /* Sources */,
 				AE91A3621E862AC600E460D6 /* Frameworks */,
 				AE91A3631E862AC600E460D6 /* Resources */,
+				7474FA8AFB1FDBA6B210AF9B /* [CP] Embed Pods Frameworks */,
+				F93EA6379E6754A601CC659B /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -134,6 +161,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		26A0F72040F3426737A76971 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		7474FA8AFB1FDBA6B210AF9B /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MHacks9/Pods-MHacks9-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		F93EA6379E6754A601CC659B /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-MHacks9/Pods-MHacks9-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		AE91A3611E862AC600E460D6 /* Sources */ = {
@@ -261,6 +336,7 @@
 		};
 		AE91A37B1E862AC700E460D6 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4ED917E6A09795A240104D4F /* Pods-MHacks9.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8R2RDVLJNC;
@@ -274,6 +350,7 @@
 		};
 		AE91A37C1E862AC700E460D6 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 4053FA264F1C2F3D59323A3C /* Pods-MHacks9.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 8R2RDVLJNC;
