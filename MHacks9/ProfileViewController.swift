@@ -21,6 +21,9 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    @IBAction func onLogout(_ sender: Any) {
+        Facebook.sharedInstance.logOut()
+    }
     
     /*
      // MARK: - Navigation

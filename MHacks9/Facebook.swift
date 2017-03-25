@@ -27,16 +27,10 @@ class Facebook: NSObject {
       
       
       switch loginResult {
-        
-        
       case .failed(let error):
         print(error)
-        
-        
       case .cancelled:
         print("User cancelled login.")
-        
-        
       case .success(let grantedPermissions, let declinedPermissions, let accessToken):
         //self.performSegue(withIdentifier: "tabBarSegue", sender: nil)
         let credential = FIRFacebookAuthProvider.credential(withAccessToken: accessToken.authenticationToken)
@@ -72,6 +66,9 @@ class Facebook: NSObject {
     try! FIRAuth.auth()!.signOut()
     let loginManager = LoginManager()
     loginManager.logOut() // this is an instance function
+    
+    
+    NotificationCenter.default.post(name: NSNotification.Name(rawValue:"userDidLogout"), object: nil)
     
     print("signed out")
     printFirebaseUsers()
