@@ -8,6 +8,7 @@
 
 import UIKit
 import Firebase
+import MBProgressHUD
 
 class RemindersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
@@ -18,28 +19,45 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(true)
         
+        MBProgressHUD.showAdded(to: self.view, animated: true)
         var ref: FIRDatabaseReference!
         ref = FIRDatabase.database().reference()
-        
+        print("it comes here")
         let userID = FIRAuth.auth()?.currentUser?.uid
         ref.child("users").child(userID!).child("Events").observeSingleEvent(of: .value, with: { (snapshot) in
+            self.events = []
+            for task in snapshot.children {
+                let value = ((task as! FIRDataSnapshot).value) as? NSDictionary
+                let name = value?["title"] as? String ?? "Your Event"
+                let date = value?["date"] as? String ?? ""
+                let time = value?["time"] as? String ?? ""
+                let song = value?["song"] as? String ?? ""
+                let tag = value?["tag"] as? Int
+                let priority = value?["priority"] as? Int
+                let dict = ["name" : name, "date" : date, "time" : time, "song" : song, "tag" : tag, "priority" : priority] as NSDictionary
+                self.events?.append(dict)
+            }/*
             // Get user value
-            let value = snapshot.value as? [NSDictionary]
+            let value = snapshot.value as? NSDictionary
+             print("it comes here")
             if let value = value {
-                self.events = []
-                for val in value {
-                    let name = val["title"] as? String ?? "Your Event"
-                    let date = val["date"] as? String ?? ""
-                    let time = val["time"] as? String ?? ""
-                    let song = val["song"] as? String ?? ""
-                    let tag = val["tag"] as? Int
-                    let priority = val["priority"] as? Int
+                 print("value\(value)")
+                //for val in value {
+                    let name = value["title"] as? String ?? "Your Event"
+                    let date = value["date"] as? String ?? ""
+                    let time = value["time"] as? String ?? ""
+                    let song = value["song"] as? String ?? ""
+                    let tag = value["tag"] as? Int
+                    let priority = value["priority"] as? Int
                     let dict = ["name" : name, "date" : date, "time" : time, "song" : song, "tag" : tag, "priority" : priority] as NSDictionary
                     self.events?.append(dict)
-                }
+                    print(dict)
+                //}*/
                 self.tableView.reloadData()
-            }
-        }) { (error) in
+            MBProgressHUD.hide(for: self.view, animated: true)
+            
+        }
+        ) { (error) in
             print(error.localizedDescription)
         }
     }
@@ -62,8 +80,14 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
         return events?.count ?? 0
     }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
