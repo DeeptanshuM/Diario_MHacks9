@@ -8,8 +8,9 @@
 
 import UIKit
 import Firebase
+import UserNotifications
 
-class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
+class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate{
     @IBOutlet weak var nameField: UITextField!
 
     @IBOutlet weak var monthField: UITextField!
@@ -145,6 +146,8 @@ class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldD
         NotificationCenter.default.addObserver(self, selector: #selector(self.keyboardWillHide), name: NSNotification.Name.UIKeyboardWillHide, object: nil)
         
     }
+    
+    
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
@@ -212,7 +215,9 @@ class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldD
         }
     }
     
-    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        textField.text = ""
+    }
     @IBAction func onSubmit(_ sender: Any) {
         
         let title = nameField!.text
@@ -230,6 +235,7 @@ class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldD
         
         ref.child("users").child(user!.uid).child("Events").childByAutoId().setValue(dict)
         
+        
         NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
         
         nameField.resignFirstResponder()
@@ -239,6 +245,13 @@ class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldD
         hourField.resignFirstResponder()
         minuteField.resignFirstResponder()
         songField.resignFirstResponder()
+        
+        var dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM-dd-yyyy HH:mm:ss"
+        let date2 = "\(monthField!.text!)-\(dayField!.text!)-\(yearField!.text!) \(Int(hourField!.text!)! - 1):\(minuteField!.text!):00"
+        let date3 = dateFormatter.date(from: date2)
+        let delegate = UIApplication.shared.delegate as? AppDelegate
+        delegate?.scheduleNotification(at: date3!, title: title!)
     }
     
     @IBAction func onCancel(_ sender: Any) {
@@ -264,6 +277,31 @@ class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldD
         let contentInset = UIEdgeInsets(top: 64, left: 0, bottom: 0, right: 0)
         self.scrollView.contentInset = contentInset
     }
+    
+    func textField(textField: UITextField, shouldChangeCharactersInRange range: NSRange, replacementString string: String) -> Bool {
+        
+        if textField != nameField && textField != yearField && textField != songField{
+        let currentCharacterCount = textField.text?.characters.count ?? 0
+        if (range.length + range.location > currentCharacterCount){
+            return false
+        }
+        let newLength = currentCharacterCount + string.characters.count - range.length
+        return newLength <= 2
+            
+        }
+        if textField == yearField{
+            let currentCharacterCount = textField.text?.characters.count ?? 0
+            if (range.length + range.location > currentCharacterCount){
+                return false
+            }
+            let newLength = currentCharacterCount + string.characters.count - range.length
+            return newLength <= 4
+        }
+        
+        return false
+    }
+    
+    
     
     /*
     // MARK: - Navigation
