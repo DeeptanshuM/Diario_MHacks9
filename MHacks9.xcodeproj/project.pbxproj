@@ -188,7 +188,7 @@
 				TargetAttributes = {
 					AE91A3641E862AC600E460D6 = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = 8A4H2873BE;
+						DevelopmentTeam = 8R2RDVLJNC;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -411,11 +411,11 @@
 			baseConfigurationReference = 4ED917E6A09795A240104D4F /* Pods-MHacks9.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8A4H2873BE;
+				DEVELOPMENT_TEAM = 8R2RDVLJNC;
 				INFOPLIST_FILE = MHacks9/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Deeptanshu.MHacksab;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Deeptanshu.MHacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
@@ -426,11 +426,11 @@
 			baseConfigurationReference = 4053FA264F1C2F3D59323A3C /* Pods-MHacks9.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = 8A4H2873BE;
+				DEVELOPMENT_TEAM = 8R2RDVLJNC;
 				INFOPLIST_FILE = MHacks9/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.Deeptanshu.MHacksab;
+				PRODUCT_BUNDLE_IDENTIFIER = com.Deeptanshu.MHacks;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
 			};
