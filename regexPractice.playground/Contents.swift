@@ -235,8 +235,8 @@ public func getDate_EEEE_MM_dd(input: String) -> Date?{
   }
   return nil
 }
-let test1 = "Wednesday March 15th"
-let test2 = "June 22nd"
+var test1 = "Wednesday March 15th"
+var test2 = "June 22nd"
 
 
 public func getDate_MM_dd(input: String) -> Date?{
@@ -347,5 +347,3 @@ getDateFromParse(input: "sadf June 22nd hjhhjgl")
 getDateFromParse(input: "kljhdsfv June 22 hjhjhjg")
 getDateFromParse(input: "jklsdf jkhdfjkhldfsjkhdfjks Thursday, September 1st hhjkdsflhjk")
 getDateFromParse(input: "Friday, JAn. 27")
-
-
