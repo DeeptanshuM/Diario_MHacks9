@@ -46,6 +46,14 @@ class Facebook: NSObject {
             ref = FIRDatabase.database().reference()
             
             ref.child("users").child(user!.uid).child("email").setValue(user!.email)
+            //ref.child("users").child(user!.uid).child("phone").setValue(nil)
+            //ref.child("users").child(user!.uid).child("events").child("title").setValue(nil)
+            //ref.child("users").child(user!.uid).child("events").child("date").setValue(nil)
+            //ref.child("users").child(user!.uid).child("events").child("time").setValue(nil)
+            //ref.child("users").child(user!.uid).child("events").child("song").setValue(nil)
+            //ref.child("users").child(user!.uid).child("events").child("tag").setValue(nil)
+            //ref.child("users").child(user!.uid).child("events").child("priority").setValue(nil)
+            
             success()
           }
           print("Logged in!")
