@@ -223,4 +223,19 @@ public func getDate_MM_dd_yy(input: String) -> Date?{
   return nil
 }
 
-getDate_MM_dd_yy(input: "01.02.03")
+public func getDate_EEEE_MM_dd(input: String) -> Date?{
+  let regex_EEEE_MM_dd = "\\w+,? \\w+ \\d+(st|nd|th)?"
+  if let range = input.range(of:regex_EEEE_MM_dd, options: [.regularExpression, .caseInsensitive]) {
+    let result = input.substring(with:range)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE MMM dd yyyy"
+    let dateString = getDay_DayDateYear(input: result) + " " + getMonth_DayDateYear(input: result) +  " " + getDate_DayDateYear(input: result) + " 2017"
+    let dateObj = dateFormatter.date(from: dateString)
+    return dateObj
+  }
+  return nil
+}
+let test1 = "Wednesday March 15th"
+let test2 = "June 8th"
+
+getDate_EEEE_MM_dd(input: test1)
