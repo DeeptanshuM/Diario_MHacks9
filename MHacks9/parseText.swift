@@ -13,13 +13,15 @@ class parseText: NSObject {
   //example of Date it returns: Dec 21, 2017, 12:00 AM"
   //if date not found then returns nil
   
-  public class func getDate(input: String) -> Date?{
+  public class func getDate(input: String) -> Date?
+  {
     let regex_DayDateMonth = "(\\w+,?) (\\d+(st|nd|th)?,?) (\\w+)(,|.)?"
     let regex_Date_MM_dd_yy = "(\\d\\d?(.|-|/)\\d\\d?(.|-|/)\\d\\d?)"
     let regex_EEEE_MM_dd = "\\w+,? \\w+(,|.)? (\\d+(st|nd|th)?)"
     let regex_MM_dd = "\\w+(,|.)? \\d+(st|nd|th)?"
     
-    if let range = input.range(of:regex_DayDateMonth, options: [.regularExpression, .caseInsensitive]) {
+    if let range = input.range(of:regex_DayDateMonth, options: [.regularExpression, .caseInsensitive])
+    {
       let result = input.substring(with:range)
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "EEEE, dd MMM yyyy"
@@ -30,14 +32,16 @@ class parseText: NSObject {
       }
     }
     
-    if let range = input.range(of:regex_Date_MM_dd_yy, options: [.regularExpression, .caseInsensitive]) {
+    if let range = input.range(of:regex_Date_MM_dd_yy, options: [.regularExpression, .caseInsensitive])
+    {
       let result = input.substring(with:range)
       var month: String = ""
       var day: String = ""
       var year: String = ""
       var i: Int = 1
       
-      for index in result.characters.indices{
+      for index in result.characters.indices
+      {
         if (i == 1){
           month = String(result[index])
         }
@@ -67,12 +71,14 @@ class parseText: NSObject {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "MM dd yy"
       let dateObj = dateFormatter.date(from: dateString)
-      if ((dateObj) != nil){
+      if ((dateObj) != nil)
+      {
         return dateObj
       }
     }
     
-    if let range = input.range(of:regex_EEEE_MM_dd, options: [.regularExpression, .caseInsensitive]) {
+    if let range = input.range(of:regex_EEEE_MM_dd, options: [.regularExpression, .caseInsensitive])
+    {
       let result = input.substring(with:range)
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "EEEE MMM dd yyyy"
@@ -83,7 +89,8 @@ class parseText: NSObject {
       }
     }
     
-    if let range = input.range(of:regex_MM_dd, options: [.regularExpression, .caseInsensitive]) {
+    if let range = input.range(of:regex_MM_dd, options: [.regularExpression, .caseInsensitive])
+    {
       let result = input.substring(with:range)
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "MMM dd yyyy"
@@ -96,7 +103,6 @@ class parseText: NSObject {
     
     return nil
   }
-}
 
 
 //MARK: Private functions
