@@ -35,8 +35,13 @@ class CaptureViewController: UIViewController {
     
     @IBAction func onCapture(_ sender: Any) {
         self.cameraManager.capturePictureWithCompletion { (image: UIImage?, error: NSError?) in
+            if let image = image {
+                self.image = image
+                GoogleCloudVisionAPI.getText(from: image)
+                let date = parseText.getDate(input: GoogleCloudVisionAPI.recognizedText)
+                print(date)
+            }
             
-            self.image = image!
         }
     }
 

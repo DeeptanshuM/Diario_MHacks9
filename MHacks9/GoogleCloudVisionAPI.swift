@@ -11,13 +11,13 @@ import SwiftyJSON
 
 class GoogleCloudVisionAPI: NSObject {
 
-    static let apiKey = ""
-    let googleURL = "https://vision.googleapis.com/v1/images:annotate?key=\(apiKey)"
-    let session = URLSession.shared
+    static let apiKey = "AIzaSyAMzdhIzz21nTde3gNhArudwLETE1IUj-c"
+    static let googleURL = "https://vision.googleapis.com/v1/images:annotate?key=\(apiKey)"
+    static let session = URLSession.shared
     
     static var recognizedText = ""
     
-    func getText(from image: UIImage) {
+    class func getText(from image: UIImage) {
         var data = UIImagePNGRepresentation(image)
         
         // Resize the image if it exceeds the 2MB API limit
@@ -26,11 +26,10 @@ class GoogleCloudVisionAPI: NSObject {
             let new: CGSize = CGSize(width: 800, height: old.height / old.width * 800)
             data = resizeImage(new, image: image)
         }
-        
         getText(with: data!.base64EncodedString(options: .endLineWithCarriageReturn))
     }
     
-    func resizeImage(_ imageSize: CGSize, image: UIImage) -> Data {
+    class func resizeImage(_ imageSize: CGSize, image: UIImage) -> Data {
         UIGraphicsBeginImageContext(imageSize)
         image.draw(in: CGRect(x: 0, y: 0, width: imageSize.width, height: imageSize.height))
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
@@ -39,7 +38,7 @@ class GoogleCloudVisionAPI: NSObject {
         return resizedImage!
     }
     
-    func getText(with data: String) {
+    class func getText(with image: String) {
         var request = URLRequest(url: URL(string: googleURL)!)
         request.httpMethod = "POST"
         request.addValue("application/json", forHTTPHeaderField: "Content-Type")
@@ -48,12 +47,11 @@ class GoogleCloudVisionAPI: NSObject {
         let jsonRequest = [
             "requests": [
                 "image": [
-                    "content": data
+                    "content": image
                 ],
                 "features": [
                     [
-                        "type": "TEXT_DETECTION",
-                        "maxResults": 10
+                        "type": "TEXT_DETECTION"
                     ]
                 ]
             ]
@@ -77,7 +75,7 @@ class GoogleCloudVisionAPI: NSObject {
             }
             
             let json = JSON(data)
-            GoogleCloudVisionAPI.recognizedText = json["response"][0]["fullTextAnnotation"]["text"].string!
+            recognizedText = json["responses"][0]["fullTextAnnotation"]["text"].string!
             
             semaphore.signal()
         }
@@ -88,7 +86,4 @@ class GoogleCloudVisionAPI: NSObject {
     
     }
     
-    func getDate() {
-        
-    }
 }

@@ -29,7 +29,8 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         print("There is a current user")
         
         let storyBoard = UIStoryboard(name: "Main", bundle: nil)
-        let vc = storyBoard.instantiateViewController(withIdentifier: "tabBar")
+        let vc = storyBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+        vc.selectedIndex = 1
         window?.rootViewController = vc
     }
     
