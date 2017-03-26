@@ -8,7 +8,8 @@
 
 import UIKit
 
-class ProfileViewController: UIViewController {
+class ProfileViewController: UIViewController, UITextFieldDelegate {
+    @IBOutlet weak var phoneField: UITextField!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -19,6 +20,8 @@ class ProfileViewController: UIViewController {
         self.tabBarController?.tabBar.backgroundImage = transparentPixel
         self.tabBarController?.tabBar.shadowImage = transparentPixel
         self.tabBarController?.tabBar.isTranslucent = true
+        
+        phoneField.delegate = self
     }
     
     override func didReceiveMemoryWarning() {
@@ -26,8 +29,17 @@ class ProfileViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        textField.resignFirstResponder()
+        return true
+    }
+    
     @IBAction func onLogout(_ sender: Any) {
         Facebook.sharedInstance.logOut()
+    }
+    
+    @IBAction func onSubmit(_ sender: Any) {
+        
     }
     
     /*

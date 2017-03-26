@@ -94,7 +94,6 @@
                                             <outlet property="scheduleView" destination="GTA-kg-OCR" id="OWm-aX-1PC"/>
                                             <outlet property="tagView" destination="WE0-G8-Wop" id="FCJ-0X-EJ0"/>
                                             <outlet property="titleLabel" destination="VON-mt-0LD" id="Sd5-0k-wg8"/>
-                                            <segue destination="1xT-QS-1Bo" kind="show" id="Dse-7H-upY"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -661,26 +660,6 @@
             </objects>
             <point key="canvasLocation" x="4551.1999999999998" y="-497.00149925037488"/>
         </scene>
-        <!--View Controller-->
-        <scene sceneID="1Im-Q5-Uvi">
-            <objects>
-                <viewController id="PSI-9N-RZA" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="QLD-4j-MOH"/>
-                        <viewControllerLayoutGuide type="bottom" id="M2K-5u-n5e"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="ZT8-r8-WeW">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="800"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                    <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
-                    <size key="freeformSize" width="375" height="800"/>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="dGB-h5-oJe" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="5409" y="-471"/>
-        </scene>
         <!--Profile View Controller-->
         <scene sceneID="Xwi-or-PB9">
             <objects>
@@ -692,6 +671,30 @@
                     <view key="view" contentMode="scaleToFill" id="jEa-Ov-kEh">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Phone Number" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="B2k-yR-URx">
+                                <rect key="frame" x="99" y="87" width="177" height="36"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" name="Avenir-Book" family="Avenir" pointSize="26"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="wbq-xb-YVQ">
+                                <rect key="frame" x="16" y="131" width="343" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <nil key="textColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <textInputTraits key="textInputTraits" keyboardType="phonePad"/>
+                            </textField>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n7Y-0k-3GN">
+                                <rect key="frame" x="163" y="197" width="49" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Submit"/>
+                                <connections>
+                                    <action selector="onSubmit:" destination="7qo-S7-fwM" eventType="touchUpInside" id="6rD-ub-VNd"/>
+                                </connections>
+                            </button>
+                        </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" id="YWR-FV-HbK">
@@ -706,6 +709,9 @@
                             </button>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="phoneField" destination="wbq-xb-YVQ" id="s1j-oy-Zkj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7uh-AY-heN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
