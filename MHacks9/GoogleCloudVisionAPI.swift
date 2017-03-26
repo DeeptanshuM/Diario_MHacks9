@@ -75,6 +75,7 @@ class GoogleCloudVisionAPI: NSObject {
             }
             
             let json = JSON(data)
+            print(json["responses"][0]["fullTextAnnotation"]["text"].string)
             recognizedText = json["responses"][0]["fullTextAnnotation"]["text"].string!
             
             semaphore.signal()
