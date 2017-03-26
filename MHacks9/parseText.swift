@@ -105,7 +105,6 @@ class parseText: NSObject {
   }
 }
 
-
 //MARK: Private functions
 private func getDay_DayDateYear(input: String) -> String{
   if input.range(of:"mon", options: [.regularExpression, .caseInsensitive]) != nil {
