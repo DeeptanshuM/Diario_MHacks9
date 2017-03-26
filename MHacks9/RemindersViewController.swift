@@ -12,7 +12,7 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
 
     @IBOutlet weak var tableView: UITableView!
     
-    var color = 100
+    var events: [NSDictionary]?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -32,18 +32,17 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return 7
+        return events?.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reminders", for: indexPath) as! RemindersTableViewCell
         
-        //color = color + 30
+        let event = events?[indexPath.row]
         
-        //cell.backgroundColor = UIColor.init(colorLiteralRed: Float(color), green: Float(color), blue: Float(color), alpha: 1)
-        //cell.backgroundColor = UIColor.green
+        cell.titleLabel.text = event?["event"] as? String
+        cell.dateLabel.text = event?["date"] as? String
         
         return cell
     }
