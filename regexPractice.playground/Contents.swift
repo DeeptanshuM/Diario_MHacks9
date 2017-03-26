@@ -236,7 +236,7 @@ public func getDate_EEEE_MM_dd(input: String) -> Date?{
   return nil
 }
 let test1 = "Wednesday March 15th"
-let test2 = "Dec 22nd"
+let test2 = "June 22nd"
 
 
 public func getDate_MM_dd(input: String) -> Date?{
@@ -252,6 +252,100 @@ public func getDate_MM_dd(input: String) -> Date?{
   return nil
 }
 
-getDate_EEEE_MM_dd(input: test1)
-getDate_MM_dd(input: test2)
+public func getDateFromParse(input: String) -> Date?{
+  let regex_DayDateMonth = "(\\w+,?) (\\d+(st|nd|th)?,?) (\\w+)(,|.)?"
+  let regex_Date_MM_dd_yy = "(\\d\\d?(.|-|/)\\d\\d?(.|-|/)\\d\\d?)"
+  let regex_EEEE_MM_dd = "\\w+,? \\w+(,|.)? (\\d+(st|nd|th)?)"
+  let regex_MM_dd = "\\w+(,|.)? \\d+(st|nd|th)?"
+  
+  if let range = input.range(of:regex_DayDateMonth, options: [.regularExpression, .caseInsensitive]) {
+    let result = input.substring(with:range)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, dd MMM yyyy"
+    let dateString = getDay_DayDateYear(input: result) + ", " + getDate_DayDateYear(input: result) + " " + getMonth_DayDateYear(input: result) + " 2017"
+    let dateObj = dateFormatter.date(from: dateString)
+    if ((dateObj) != nil){
+    return dateObj
+    }
+  }
+  
+  if let range = input.range(of:regex_Date_MM_dd_yy, options: [.regularExpression, .caseInsensitive]) {
+    let result = input.substring(with:range)
+    var month: String = ""
+    var day: String = ""
+    var year: String = ""
+    var i: Int = 1
+    
+    for index in result.characters.indices{
+      if (i == 1){
+        month = String(result[index])
+      }
+      if (i == 2){
+        month += String(result[index])
+      }
+      if(i == 4)
+      {
+        day = String(result[index])
+      }
+      if(i == 5)
+      {
+        day += String(result[index])
+      }
+      if(i == 7)
+      {
+        year = String(result[index])
+      }
+      if(i == 8)
+      {
+        year += String(result[index])
+      }
+      i += 1
+    }
+    
+    let dateString = month + " " + day + " " + year
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MM dd yy"
+    let dateObj = dateFormatter.date(from: dateString)
+    if ((dateObj) != nil){
+      return dateObj
+    }
+  }
+  
+  if let range = input.range(of:regex_EEEE_MM_dd, options: [.regularExpression, .caseInsensitive]) {
+    let result = input.substring(with:range)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE MMM dd yyyy"
+    let dateString = getDay_DayDateYear(input: result) + " " + getMonth_DayDateYear(input: result) +  " " + getDate_DayDateYear(input: result) + " 2017"
+    let dateObj = dateFormatter.date(from: dateString)
+    if ((dateObj) != nil){
+      return dateObj
+    }
+  }
+  
+  if let range = input.range(of:regex_MM_dd, options: [.regularExpression, .caseInsensitive]) {
+    let result = input.substring(with:range)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "MMM dd yyyy"
+    let dateString = getMonth_DayDateYear(input: result) +  " " + getDate_DayDateYear(input: result) + " 2017"
+    let dateObj = dateFormatter.date(from: dateString)
+    if ((dateObj) != nil){
+      return dateObj
+    }
+  }
+  
+  return nil
+}
+
+
+//getDate_EEEE_MM_dd(input: test1)
+//getDate_MM_dd(input: test2)
+
+var test3 = ""
+getDateFromParse(input: "dsfds 01.01.17 hjghjgjk")
+getDateFromParse(input: "sdffd Wednesday March 15th hkgghghlj")
+getDateFromParse(input: "sadf June 22nd hjhhjgl")
+getDateFromParse(input: "kljhdsfv June 22 hjhjhjg")
+getDateFromParse(input: "jklsdf jkhdfjkhldfsjkhdfjks Thursday, September 1st hhjkdsflhjk")
+getDateFromParse(input: "Friday, JAn. 27")
+
 
