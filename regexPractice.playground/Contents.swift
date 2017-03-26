@@ -347,3 +347,12 @@ getDateFromParse(input: "sadf June 22nd hjhhjgl")
 getDateFromParse(input: "kljhdsfv June 22 hjhjhjg")
 getDateFromParse(input: "jklsdf jkhdfjkhldfsjkhdfjks Thursday, September 1st hhjkdsflhjk")
 getDateFromParse(input: "Friday, JAn. 27")
+
+func callParseTextLinebyLine(input: String){
+  let textLines = input.components(separatedBy: .newlines)
+  for line in textLines{
+    print(line)
+  }
+}
+
+callParseTextLinebyLine(input: "Preview File Edit View Go Tools Window Help\n3bBa7eoeb20627318db65ce095b81522\n10.12.15\nMOLLY BREWER & RYAN SAUNDERS\nILLINOIS\nstatie internal let googleURL string\nstatis internal let session\nstat Terral war\nget terterrem snager\n")
