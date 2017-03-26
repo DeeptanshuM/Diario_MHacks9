@@ -55,7 +55,7 @@ class CaptureViewController: UIViewController {
   private func callParseTextLinebyLine(input: String) -> Date?{
     let textLines = input.components(separatedBy: .newlines)
     for line in textLines{
-      if let date = parseText.getDate(input: line) {
+      if let date = parseText.sharedInstance.getDate(input: line) {
         return date
       }
     }
