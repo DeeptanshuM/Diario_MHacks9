@@ -9,13 +9,14 @@
 import Foundation
 
 class parseText: NSObject {
-
+  
   //example of Date it returns: Dec 21, 2017, 12:00 AM"
   //if date not found then returns nil
+  
   public class func getDate(input: String) -> Date?{
-    let regex_DayDateMonth = "(\\w+,?) (\\d+(st|nd|th)?,?) (\\w+)"
+    let regex_DayDateMonth = "(\\w+,?) (\\d+(st|nd|th)?,?) (\\w+)(,|.)?"
     let regex_Date_MM_dd_yy = "(\\d\\d?(.|-|/)\\d\\d?(.|-|/)\\d\\d?)"
-    let regex_EEEE_MM_dd = "\\w+(,|.)? \\w+(,|.)? \\d+(st|nd|th)?"
+    let regex_EEEE_MM_dd = "\\w+,? \\w+(,|.)? (\\d+(st|nd|th)?)"
     let regex_MM_dd = "\\w+(,|.)? \\d+(st|nd|th)?"
     
     if let range = input.range(of:regex_DayDateMonth, options: [.regularExpression, .caseInsensitive]) {
@@ -24,7 +25,9 @@ class parseText: NSObject {
       dateFormatter.dateFormat = "EEEE, dd MMM yyyy"
       let dateString = getDay_DayDateYear(input: result) + ", " + getDate_DayDateYear(input: result) + " " + getMonth_DayDateYear(input: result) + " 2017"
       let dateObj = dateFormatter.date(from: dateString)
-      return dateObj
+      if ((dateObj) != nil){
+        return dateObj
+      }
     }
     
     if let range = input.range(of:regex_Date_MM_dd_yy, options: [.regularExpression, .caseInsensitive]) {
@@ -64,7 +67,9 @@ class parseText: NSObject {
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "MM dd yy"
       let dateObj = dateFormatter.date(from: dateString)
-      return dateObj
+      if ((dateObj) != nil){
+        return dateObj
+      }
     }
     
     if let range = input.range(of:regex_EEEE_MM_dd, options: [.regularExpression, .caseInsensitive]) {
@@ -73,22 +78,26 @@ class parseText: NSObject {
       dateFormatter.dateFormat = "EEEE MMM dd yyyy"
       let dateString = getDay_DayDateYear(input: result) + " " + getMonth_DayDateYear(input: result) +  " " + getDate_DayDateYear(input: result) + " 2017"
       let dateObj = dateFormatter.date(from: dateString)
-      return dateObj
+      if ((dateObj) != nil){
+        return dateObj
+      }
     }
-
+    
     if let range = input.range(of:regex_MM_dd, options: [.regularExpression, .caseInsensitive]) {
       let result = input.substring(with:range)
       let dateFormatter = DateFormatter()
       dateFormatter.dateFormat = "MMM dd yyyy"
       let dateString = getMonth_DayDateYear(input: result) +  " " + getDate_DayDateYear(input: result) + " 2017"
       let dateObj = dateFormatter.date(from: dateString)
-      return dateObj
+      if ((dateObj) != nil){
+        return dateObj
+      }
     }
     
     return nil
   }
-  
 }
+
 
 //MARK: Private functions
 private func getDay_DayDateYear(input: String) -> String{
