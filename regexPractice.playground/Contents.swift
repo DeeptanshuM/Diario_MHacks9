@@ -356,3 +356,40 @@ func callParseTextLinebyLine(input: String){
 }
 
 callParseTextLinebyLine(input: "Preview File Edit View Go Tools Window Help\n3bBa7eoeb20627318db65ce095b81522\n10.12.15\nMOLLY BREWER & RYAN SAUNDERS\nILLINOIS\nstatie internal let googleURL string\nstatis internal let session\nstat Terral war\nget terterrem snager\n")
+
+
+///////////////////////////////////////////
+//-------To initialize the date field in event UI------//
+let dateFormatterForEvent = DateFormatter()
+dateFormatterForEvent.dateStyle = .full
+dateFormatterForEvent.timeStyle = .none
+let dateNow = Date()
+
+//assign the string below to textfield of UI
+//eg: Sunday, March 26, 2017
+print(dateFormatterForEvent.string(from: dateNow))
+
+//-------To store the final, corrected dateObj in the db------//
+//Uncomment dateString and pass it from field of dateFormatterForTableCell instead of hard coded date
+let dateFormatterForTableCell = DateFormatter()
+dateFormatterForTableCell.dateFormat = "EEEE, MMM dd, yyyy"
+//let dateString = textField.text
+let dateObj = dateFormatterForTableCell.date(from: "Sunday, March 26, 2017")
+if ((dateObj) != nil){
+  //save db to database dateObj
+}
+else{
+  //maybe reload original date and make a UIAlert to tell user to format the correct date exactly the same way??
+}
+
+///////////////////////////////////////////
+//Random collection of statements I'll need soon'
+//let userID = FIRAuth.auth()?.currentUser?.uid
+
+//var ref: FIRDatabaseReference!
+
+//ref = FIRDatabase.database().reference()
+
+//self.ref.child("users").child(user.uid).child("email").setValue(user!.email)
+
+
