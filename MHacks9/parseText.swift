@@ -15,8 +15,8 @@ class parseText: NSObject {
   public class func getDate(input: String) -> Date?{
     let regex_DayDateMonth = "(\\w+,?) (\\d+(st|nd|th)?,?) (\\w+)"
     let regex_Date_MM_dd_yy = "(\\d\\d?(.|-|/)\\d\\d?(.|-|/)\\d\\d?)"
-    let regex_EEEE_MM_dd = "\\w+,? \\w+ \\d+(st|nd|th)?"
-    let regex_MM_dd = "\\w+ \\d+(st|nd|th)?"
+    let regex_EEEE_MM_dd = "\\w+(,|.)? \\w+(,|.)? \\d+(st|nd|th)?"
+    let regex_MM_dd = "\\w+(,|.)? \\d+(st|nd|th)?"
     
     if let range = input.range(of:regex_DayDateMonth, options: [.regularExpression, .caseInsensitive]) {
       let result = input.substring(with:range)
