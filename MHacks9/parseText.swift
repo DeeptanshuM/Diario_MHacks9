@@ -103,6 +103,7 @@ class parseText: NSObject {
     
     return nil
   }
+}
 
 
 //MARK: Private functions
