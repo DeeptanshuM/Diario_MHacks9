@@ -7,8 +7,10 @@
 //
 
 import UIKit
+import Firebase
 
 class ProfileViewController: UIViewController, UITextFieldDelegate {
+    
     @IBOutlet weak var phoneField: UITextField!
     
     override func viewDidLoad() {
@@ -40,6 +42,29 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func onSubmit(_ sender: Any) {
         
+        var phoneNo = ""
+        
+        if phoneField.text != nil {
+            
+            phoneNo = phoneField.text!
+        }
+        
+        let noLength = phoneNo.characters.count
+        
+        if (noLength < 11) {
+            
+            let alert = UIAlertController(title: "Error", message: "Add + followed by country code and then phone number with no spaces in between", preferredStyle: UIAlertControllerStyle.alert)
+            alert.addAction(UIAlertAction(title: "OK", style: UIAlertActionStyle.default, handler: nil))
+            self.present(alert, animated: true, completion: nil)
+        } else {
+            
+            var ref: FIRDatabaseReference!
+            /////////////////////
+            var user = FIRAuth.auth()?.currentUser
+            ref = FIRDatabase.database().reference()
+            
+            ref.child("users").child(user!.uid).child("phone").setValue(phoneNo)
+        }
     }
     
     /*

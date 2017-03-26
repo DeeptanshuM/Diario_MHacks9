@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import Firebase
 
 class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldDelegate {
     @IBOutlet weak var nameField: UITextField!
@@ -84,18 +85,26 @@ class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldD
         scrollView.delegate = self
 //        view.insertSubview(scrollView, at: 0)
         
+        print(date!)
         var dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "yyyy-mm-dd"
+        dateFormatter.dateFormat = "dd-yyyy-MM HH:mm:ss"
+        
         let dateString = dateFormatter.string(from: self.date!)
 
-        let arr = dateString.components(separatedBy: "-")
+        let arr2 = dateString.components(separatedBy: " ")
+        let arr3 = arr2[1].components(separatedBy: ":")
+        let arr = arr2[0].components(separatedBy: "-")
         
+        monthField.text = arr[2]
+        dayField.text = arr[0]
+        yearField.text = arr[1]
         
-        monthField.text = arr[1]
-        dayField.text = arr[2]
-        yearField.text = arr[0]
+        print(dateString)
+        print(arr2)
+        print(arr3)
         
-        
+        hourField.text = arr3[0]
+        minuteField.text = arr3[1]
         
         nameField.delegate = self
         
@@ -205,6 +214,21 @@ class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldD
     
     
     @IBAction func onSubmit(_ sender: Any) {
+        
+        let title = nameField!.text
+        let date = ("\(monthField!.text!)-\(dayField!.text!)-\(yearField!.text!)")
+        let time = ("\(hourField!.text!):\(minuteField!.text!)")
+        let song = songField!.text
+        let tag = color
+        let priority = self.priority
+        
+        var ref: FIRDatabaseReference!
+        var user = FIRAuth.auth()?.currentUser
+        ref = FIRDatabase.database().reference()
+            
+        let dict = ["name": title, "date": date, "time": time, "song": song, "tag": tag, "priority": priority] as [String : Any]
+        
+        ref.child("users").child(user!.uid).child("Events").childByAutoId().setValue(dict)
     }
     
     @IBAction func onCancel(_ sender: Any) {

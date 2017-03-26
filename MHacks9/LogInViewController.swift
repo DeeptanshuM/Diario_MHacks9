@@ -39,25 +39,6 @@ class LogInViewController: UIViewController {
     })
   }
   
- /* public func logOut(){
-    let firebaseAuth = FIRAuth.auth()
-    
-    do {
-      try FIRAuth.auth()?.signOut()
-    } catch let signOutError as NSError {
-      print ("Error signing out: %@", signOutError)
-    }
-    
-    try! FIRAuth.auth()!.signOut()
-    let loginManager = LoginManager()
-    loginManager.logOut() // this is an instance function
-    
-    print("signed out")
-    printFirebaseUsers()
-    
-  }
-  */
-
   override func didReceiveMemoryWarning() {
     super.didReceiveMemoryWarning()
     // Dispose of any resources that can be recreated.
