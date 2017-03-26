@@ -15,6 +15,8 @@ class CaptureViewController: UIViewController {
   let cameraManager = CameraManager()
   
   @IBOutlet weak var cameraView: UIView!
+    
+    var date: Date?
   
   override func viewDidLoad() {
     super.viewDidLoad()
@@ -46,10 +48,14 @@ class CaptureViewController: UIViewController {
         //let date = parseText.getDate(input: GoogleCloudVisionAPI.recognizedText)
         let date = self.callParseTextLinebyLine(input: GoogleCloudVisionAPI.recognizedText)
         if ((date) != nil){
-          print(date!)
+            self.date = date
+          self.performSegue(withIdentifier: "captureSegue", sender: nil)
         }
         else{
-          print("nil returned")
+          let alert = UIAlertController(title: "An Error Occurred", message: "An error occurred when looking for a date. Please try again.", preferredStyle: .alert)
+            let action = UIAlertAction(title: "Ok", style: .default, handler: nil)
+            alert.addAction(action)
+            self.show(alert, sender: nil)
         }
       }
       
@@ -67,14 +73,15 @@ class CaptureViewController: UIViewController {
     return nil
   }
   
-  /*
+  
    // MARK: - Navigation
    
    // In a storyboard-based application, you will often want to do a little preparation before navigation
    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-   // Get the new view controller using segue.destinationViewController.
-   // Pass the selected object to the new view controller.
+        let destination = segue.destination as! UINavigationController
+        let vc = destination.topViewController as! CreateViewController
+        vc.date = self.date
    }
-   */
+   
   
 }
