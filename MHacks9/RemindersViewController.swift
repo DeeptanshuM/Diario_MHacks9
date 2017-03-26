@@ -28,7 +28,8 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
             self.events = []
             for task in snapshot.children {
                 let value = ((task as! FIRDataSnapshot).value) as? NSDictionary
-                let name = value?["title"] as? String ?? "Your Event"
+                let name = value?["name"] as? String ?? "Your Event"
+                //print(name)
                 let date = value?["date"] as? String ?? ""
                 let time = value?["time"] as? String ?? ""
                 let song = value?["song"] as? String ?? ""
@@ -53,6 +54,7 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
                     self.events?.append(dict)
                     print(dict)
                 //}*/
+            
                 self.tableView.reloadData()
             MBProgressHUD.hide(for: self.view, animated: true)
             
@@ -93,7 +95,7 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "reminders", for: indexPath) as! RemindersTableViewCell
         
-        let event = events?[indexPath.row]
+        let event = events?[(events?.count)! - 1 - indexPath.row]
         
         cell.titleLabel.text = event?["name"] as? String
         cell.dateLabel.text = event?["date"] as? String
