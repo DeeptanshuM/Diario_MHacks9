@@ -14,6 +14,7 @@ class parseText: NSObject {
   //if date not found then returns nil
   public class func getDate(input: String) -> Date?{
     let regex_DayDateMonth = "(\\w+,?) (\\d+(st|nd|th)?,?) (\\w+)"
+    let regex_Date_MM_dd_yy = "(\\d\\d?(.|-|/)\\d\\d?(.|-|/)\\d\\d?)"
     
     if let range = input.range(of:regex_DayDateMonth, options: [.regularExpression, .caseInsensitive]) {
       let result = input.substring(with:range)
@@ -23,6 +24,47 @@ class parseText: NSObject {
       let dateObj = dateFormatter.date(from: dateString)
       return dateObj
     }
+    
+    if let range = input.range(of:regex_Date_MM_dd_yy, options: [.regularExpression, .caseInsensitive]) {
+      let result = input.substring(with:range)
+      var month: String = ""
+      var day: String = ""
+      var year: String = ""
+      var i: Int = 1
+      
+      for index in result.characters.indices{
+        if (i == 1){
+          month = String(result[index])
+        }
+        if (i == 2){
+          month += String(result[index])
+        }
+        if(i == 4)
+        {
+          day = String(result[index])
+        }
+        if(i == 5)
+        {
+          day += String(result[index])
+        }
+        if(i == 7)
+        {
+          year = String(result[index])
+        }
+        if(i == 8)
+        {
+          year += String(result[index])
+        }
+        i += 1
+      }
+      
+      let dateString = month + " " + day + " " + year
+      let dateFormatter = DateFormatter()
+      dateFormatter.dateFormat = "MM dd yy"
+      let dateObj = dateFormatter.date(from: dateString)
+      return dateObj
+    }
+
     return nil
   }
   
