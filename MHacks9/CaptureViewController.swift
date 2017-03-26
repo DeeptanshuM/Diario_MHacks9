@@ -45,7 +45,12 @@ class CaptureViewController: UIViewController {
         GoogleCloudVisionAPI.getText(from: image)
         //let date = parseText.getDate(input: GoogleCloudVisionAPI.recognizedText)
         let date = self.callParseTextLinebyLine(input: GoogleCloudVisionAPI.recognizedText)
-        print(date)
+        if ((date) != nil){
+          print(date!)
+        }
+        else{
+          print("nil returned")
+        }
       }
       
     }
