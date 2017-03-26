@@ -41,10 +41,13 @@ class Facebook: NSObject {
             // ...
             failure(error)
           } else {
+            var ref: FIRDatabaseReference!
+            
+            ref = FIRDatabase.database().reference()
+            
+            ref.child("users").child(user!.uid).child("email").setValue(user!.email)
             success()
           }
-          
-          
           print("Logged in!")
           self.printFirebaseUsers()
           

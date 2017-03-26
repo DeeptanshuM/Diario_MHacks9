@@ -383,3 +383,13 @@ else{
 }
 
 ///////////////////////////////////////////
+//Random collection of statements I'll need soon'
+//let userID = FIRAuth.auth()?.currentUser?.uid
+
+//var ref: FIRDatabaseReference!
+
+//ref = FIRDatabase.database().reference()
+
+//self.ref.child("users").child(user.uid).child("email").setValue(user!.email)
+
+
