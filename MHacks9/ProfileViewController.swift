@@ -65,8 +65,12 @@ class ProfileViewController: UIViewController, UITextFieldDelegate {
             
             ref.child("users").child(user!.uid).child("phone").setValue(phoneNo)
         }
+        phoneField.resignFirstResponder()
     }
     
+    @IBAction func onTap(_ sender: UITapGestureRecognizer) {
+        phoneField.resignFirstResponder()
+    }
     /*
      // MARK: - Navigation
      

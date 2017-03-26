@@ -42,7 +42,12 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
-    
+    NotificationCenter.default.addObserver(forName: NSNotification.Name("load"), object: nil, queue: OperationQueue.main) { (Notification) in
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+        vc.selectedIndex = 0
+        self.window?.rootViewController = vc
+    }
     
     return true
   }

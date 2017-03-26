@@ -13,6 +13,7 @@ pod 'Firebase/Storage'
 pod 'FacebookCore'
 pod 'FacebookLogin'
 pod 'FacebookShare'
+pod 'MBProgressHUD'
 
 pod 'SwiftyJSON'
 

@@ -229,6 +229,16 @@ class CreateViewController: UIViewController, UIScrollViewDelegate, UITextFieldD
         let dict = ["name": title, "date": date, "time": time, "song": song, "tag": tag, "priority": priority] as [String : Any]
         
         ref.child("users").child(user!.uid).child("Events").childByAutoId().setValue(dict)
+        
+        NotificationCenter.default.post(name: NSNotification.Name(rawValue: "load"), object: nil)
+        
+        nameField.resignFirstResponder()
+        monthField.resignFirstResponder()
+        dayField.resignFirstResponder()
+        yearField.resignFirstResponder()
+        hourField.resignFirstResponder()
+        minuteField.resignFirstResponder()
+        songField.resignFirstResponder()
     }
     
     @IBAction func onCancel(_ sender: Any) {
