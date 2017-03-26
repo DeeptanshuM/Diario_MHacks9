@@ -7,12 +7,42 @@
 //
 
 import UIKit
+import Firebase
 
 class RemindersViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
 
     @IBOutlet weak var tableView: UITableView!
     
     var events: [NSDictionary]?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(true)
+        
+        var ref: FIRDatabaseReference!
+        ref = FIRDatabase.database().reference()
+        
+        let userID = FIRAuth.auth()?.currentUser?.uid
+        ref.child("users").child(userID!).child("Events").observeSingleEvent(of: .value, with: { (snapshot) in
+            // Get user value
+            let value = snapshot.value as? [NSDictionary]
+            if let value = value {
+                self.events = []
+                for val in value {
+                    let name = val["title"] as? String ?? "Your Event"
+                    let date = val["date"] as? String ?? ""
+                    let time = val["time"] as? String ?? ""
+                    let song = val["song"] as? String ?? ""
+                    let tag = val["tag"] as? Int
+                    let priority = val["priority"] as? Int
+                    let dict = ["name" : name, "date" : date, "time" : time, "song" : song, "tag" : tag, "priority" : priority] as NSDictionary
+                    self.events?.append(dict)
+                }
+                self.tableView.reloadData()
+            }
+        }) { (error) in
+            print(error.localizedDescription)
+        }
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -41,8 +71,37 @@ class RemindersViewController: UIViewController, UITableViewDataSource, UITableV
         
         let event = events?[indexPath.row]
         
-        cell.titleLabel.text = event?["event"] as? String
+        cell.titleLabel.text = event?["name"] as? String
         cell.dateLabel.text = event?["date"] as? String
+        let color = event?["tag"] as! Int
+        
+        if color == 0 {
+            cell.tagView.backgroundColor = #colorLiteral(red: 0, green: 0.5898008943, blue: 1, alpha: 1)
+        }
+        else if color == 1 {
+            cell.tagView.backgroundColor = #colorLiteral(red: 0, green: 0.9768045545, blue: 0, alpha: 1)
+        }
+        else if color == 2 {
+            cell.tagView.backgroundColor = #colorLiteral(red: 1, green: 0.4932718873, blue: 0.4739984274, alpha: 1)
+        }
+        else if color == 3 {
+            cell.tagView.backgroundColor = #colorLiteral(red: 1, green: 0.5781051517, blue: 0, alpha: 1)
+        }
+        else if color == 4 {
+            cell.tagView.backgroundColor = #colorLiteral(red: 1, green: 0.5409764051, blue: 0.8473142982, alpha: 1)
+        }
+        else if color == 5 {
+            cell.tagView.backgroundColor = #colorLiteral(red: 0.9995340705, green: 0.988355577, blue: 0.4726552367, alpha: 1)
+        }
+        
+        if event?["priority"] as! Int == 0 {
+            cell.scheduleView.image = #imageLiteral(resourceName: "iconmonstr-check-mark-5-240")
+            cell.scheduleView.tintColor = .green
+        }
+        else if event?["priority"] as! Int == 1 {
+            cell.scheduleView.image = #imageLiteral(resourceName: "iconmonstr-help-3-240")
+            cell.scheduleView.tintColor = .blue
+        }
         
         return cell
     }
