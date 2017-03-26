@@ -9,6 +9,10 @@
 import UIKit
 
 class RemindersTableViewCell: UITableViewCell {
+    @IBOutlet weak var tagView: UIView!
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var dateLabel: UILabel!
+    @IBOutlet weak var scheduleView: UIImageView!
 
     override func awakeFromNib() {
         super.awakeFromNib()

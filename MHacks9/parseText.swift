@@ -13,6 +13,7 @@ class parseText: NSObject {
   //example of Date it returns: Dec 21, 2017, 12:00 AM"
   //if date not found then returns nil
   public class func getDate(input: String) -> Date?{
+    print(input)
     let regex_DayDateMonth = "(\\w+,?) (\\d+(st|nd|th)?,?) (\\w+)"
     let regex_Date_MM_dd_yy = "(\\d\\d?(.|-|/)\\d\\d?(.|-|/)\\d\\d?)"
     let regex_EEEE_MM_dd = "\\w+(,|.)? \\w+(,|.)? \\d+(st|nd|th)?"
