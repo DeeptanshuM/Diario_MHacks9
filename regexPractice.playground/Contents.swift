@@ -76,78 +76,105 @@ if let range = date7.range(of:regex_Date, options: [.regularExpression, .caseIns
 }
 ////////////////////////////////////////
 
-func getDay() -> String{
-  var regex_days = "mon|tue|wed|thu|fri|sat|sun"
-  
-  do {
-    let findday = try NSRegularExpression(pattern: regex_days, options: .caseInsensitive)
-
- // let findday = NSRegularExpression(pattern: regex_days, options: .caseInsensitive)
-  var myStr = "Wednesday, 7th APril"
-    let matches = findday.matches(in: myStr, options: [], range: NSRange(location: 0, length: myStr.characters.count))
-    
-//    if let match = matches.first {
-//     let range = match.rangeAt(1)
-//    if let swiftRange = range.toRange(for: myStr) {
-//        let name = myStr.substring(with: swiftRange)
-//      }
-//    }
-    
-    switch "jkdsjk" {
-      case "mon":
-       return "Monday"
-    case "tue":
+func getDay_DayDateYear(input: String) -> String{
+    if input.range(of:"mon", options: [.regularExpression, .caseInsensitive]) != nil {
+      return "Monday"
+    }
+    else if input.range(of:"tue", options: [.regularExpression, .caseInsensitive]) != nil {
       return "Tuesday"
-    case "wed":
+    }
+    else if input.range(of:"wed", options: [.regularExpression, .caseInsensitive]) != nil {
       return "Wednesday"
-    case "thu":
+    }
+    else if input.range(of:"thu", options: [.regularExpression, .caseInsensitive]) != nil {
       return "Thursday"
-    case "fri":
+    }
+    else if input.range(of:"fri", options: [.regularExpression, .caseInsensitive]) != nil  {
       return "Friday"
-    case "sat":
+    }
+    else if input.range(of:"sat", options: [.regularExpression, .caseInsensitive]) != nil  {
       return "Saturday"
-    case "sun":
+    }
+    else if input.range(of:"sun", options: [.regularExpression, .caseInsensitive]) != nil  {
       return "Sunday"
-    default:
+    }
+    else{
       return ""
     }
-  } catch let error {
-    print(error)
+}
+
+func getDate_DayDateYear(input: String) -> String{
+  if let range = input.range(of:"\\d\\d?", options: [.regularExpression, .caseInsensitive]) {
+    return input.substring(with:range)
   }
   return ""
 }
 
-///////////////////
-extension String {
-  public func match(regex: String) -> String? {
-    let expression: NSRegularExpression
-    
-    //if let exists = expression[regex]
-    //{
-    //  expression = exists
-    //}
-    //else {
-    expression = try! NSRegularExpression(pattern: "^\(regex)", options: .caseInsensitive)
-    // expression[regex] = expression
-    //}
-    
-    let range = expression.rangeOfFirstMatch(in: self, options: [], range: NSMakeRange(0, utf16.count))
-    if range.location != NSNotFound {
-      return (self as NSString).substring(with: range)
-    }
-    return nil
+func getMonth_DayDateYear(input: String) -> String{
+  if input.range(of:"jan", options: [.regularExpression, .caseInsensitive]) != nil {
+    return "January"
+  }
+  else if input.range(of:"feb", options: [.regularExpression, .caseInsensitive]) != nil {
+    return "February"
+  }
+  else if input.range(of:"mar", options: [.regularExpression, .caseInsensitive]) != nil {
+    return "March"
+  }
+  else if input.range(of:"apr", options: [.regularExpression, .caseInsensitive]) != nil {
+    return "April"
+  }
+  else if input.range(of:"may", options: [.regularExpression, .caseInsensitive]) != nil {
+    return "May"
+  }
+  else if input.range(of:"jun", options: [.regularExpression, .caseInsensitive]) != nil  {
+    return "June"
+  }
+  else if input.range(of:"jul", options: [.regularExpression, .caseInsensitive]) != nil  {
+    return "July"
+  }
+  else if input.range(of:"aug", options: [.regularExpression, .caseInsensitive]) != nil  {
+    return "Asgust"
+  }
+  else if input.range(of:"sep", options: [.regularExpression, .caseInsensitive]) != nil {
+    return "September"
+  }
+  else if input.range(of:"oct", options: [.regularExpression, .caseInsensitive]) != nil {
+    return "October"
+  }
+  else if input.range(of:"nov", options: [.regularExpression, .caseInsensitive]) != nil {
+    return "November"
+  }
+  else if input.range(of:"dec", options: [.regularExpression, .caseInsensitive]) != nil  {
+    return "December"
+  }
+  else{
+    return ""
   }
 }
 
-let myStr = "jdfsjkdsfjks Wednesday"
-var deliverance = myStr.match(regex: "Wed")
-print(deliverance)
+////////////////////////////////
+var test: String
+
+test = getDay_DayDateYear(input: "jhdfjk Wednesday , 7 khjdw") + " " + getDate_DayDateYear(input: "jhdfjk Wednesday , 7 khjdw")
+test = getDay_DayDateYear(input: "Wednesday 7th, April") + " " + getDate_DayDateYear(input: "Wednesday 7th, April")
+test = getDay_DayDateYear(input: "Wednesday 7, April") + " " + getDate_DayDateYear(input: "Wednesday 7, April")
+test = getDay_DayDateYear(input: "Wednesday, 77 April") + " " + getDate_DayDateYear(input: "Wednesday, 77 April")
+test = getDay_DayDateYear(input: "Wednesday 77 April") + " " + getDate_DayDateYear(input: "Wednesday 77 April")
 
 
-//func getdd() -> String{
-//  var regex_dd = "\\d\\d?"
- // if let findday = NSRegularExpression(pattern: regex_dd, options: .caseInsensitive){
-//    let match = findday.matchesInString(, options: .allZeros, range: range) as! [NSTextCheckingResult]
-//
-//    return match
-//}
+//If a date is not found in the string then the function returns the date of Monday, 10 Jan 1999
+public func getDate(input: String) -> Date?{
+  let regex_DayDateMonth = "(\\w+,?) (\\d+(st|nd|th)?,?) (\\w+)"
+  
+  if let range = input.range(of:regex_DayDateMonth, options: [.regularExpression, .caseInsensitive]) {
+    let result = input.substring(with:range)
+    let dateFormatter = DateFormatter()
+    dateFormatter.dateFormat = "EEEE, dd MMM yyyy"
+    let dateString = getDay_DayDateYear(input: result) + ", " + getDate_DayDateYear(input: result) + " " + getMonth_DayDateYear(input: result) + " 2017"
+    let dateObj = dateFormatter.date(from: dateString)
+    return dateObj
+  }
+  return nil
+}
+
+getDate(input: "hjkdfsjkhl Mon, 21st DEc hjkldfshjkdfjks")
