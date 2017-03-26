@@ -86,10 +86,30 @@
 			<key>orderHint</key>
 			<integer>11</integer>
 		</dict>
+		<key>SwiftyJSON.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>13</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>03E6E56F8533C2E42C696D7CCAC42910</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>146C53DDA9378F65F4A58C6695A3431B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>23BA9083ED0D2392A167A8AFA04427FA</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>31418D425B97E292FFAFC566D79FC144</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -104,7 +124,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>4FEFFF8BCFFF25082AF4A867552C5F52</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>533607A808BC64912197562E016B6085</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>593E9479C06FB200807D11AB29EB50BD</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>5A0A28913A1212C2D1EACECBA1E58AC0</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -129,7 +164,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>81BBE528FDD6F6EA688B7DBDED32DD2B</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>8329B4DD82B7A073B34A61C9527865D0</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>930070B151FDA0845CDC93C63FA7658E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>9D0F2E5EA1B46A5D72FFD42B0B39DBBC</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -139,7 +189,22 @@
 			<key>primary</key>
 			<true/>
 		</dict>
+		<key>A8F77DC39F7D0CFE46DAA5C135D96A80</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>B7B4BC933F1DCD4A5BD0FAC2538E0991</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>C052BEBFBD0AB5218CC64BA3450F6547</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>DD707E469C8D0BEA816D740155A3B629</key>
 		<dict>
 			<key>primary</key>
 			<true/>
@@ -150,6 +215,11 @@
 			<true/>
 		</dict>
 		<key>F4799B8267BFFB7DC4230C1FEA671EB5</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F55D5685B7348B9B73BC907A2E8CF2EA</key>
 		<dict>
 			<key>primary</key>
 			<true/>
