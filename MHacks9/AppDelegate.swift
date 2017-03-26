@@ -11,6 +11,7 @@ import CoreData
 import Firebase
 import FBSDKCoreKit
 import FBSDKLoginKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -42,7 +43,19 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
     }
     
+    NotificationCenter.default.addObserver(forName: NSNotification.Name("load"), object: nil, queue: OperationQueue.main) { (Notification) in
+        let storyBoard = UIStoryboard(name: "Main", bundle: nil)
+        let vc = storyBoard.instantiateViewController(withIdentifier: "tabBar") as! UITabBarController
+        vc.selectedIndex = 0
+        self.window?.rootViewController = vc
+    }
     
+    
+    UNUserNotificationCenter.current().requestAuthorization(options: [.alert, .sound]) { (accepted, error) in
+        if !accepted {
+        print("access denied")
+        }
+    }
     
     return true
   }
@@ -122,5 +135,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
       }
   }
 
+    func scheduleNotification(at date: Date, title: String) {
+        let calendar = Calendar(identifier: .gregorian)
+        let components = calendar.dateComponents(in: .current, from: date)
+        let newComponents = DateComponents(calendar: calendar, timeZone: .current, month: components.month, day: components.day, hour: components.hour, minute: components.minute)
+        
+        let trigger = UNCalendarNotificationTrigger(dateMatching: newComponents, repeats: false)
+        
+        let content = UNMutableNotificationContent()
+        content.title = title
+        content.body = "Just a reminder that you have \(title) in about an hour"
+        content.sound = UNNotificationSound.default()
+        
+        let request = UNNotificationRequest(identifier: "textNotification", content: content, trigger: trigger)
+        
+        UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
+        UNUserNotificationCenter.current().add(request) {(error) in
+            if let error = error {
+                print("Uh oh! We had an error: \(error)")
+            }
+        }
+    }
 }
 
