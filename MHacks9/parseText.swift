@@ -103,7 +103,7 @@ class parseText: NSObject {
     
     return nil
   }
-
+}
 
 //MARK: Private functions
 private func getDay_DayDateYear(input: String) -> String{
