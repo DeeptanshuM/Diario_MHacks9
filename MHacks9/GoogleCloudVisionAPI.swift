@@ -11,7 +11,7 @@ import SwiftyJSON
 
 class GoogleCloudVisionAPI: NSObject {
 
-    static let apiKey = "AIzaSyAMzdhIzz21nTde3gNhArudwLETE1IUj-c"
+    static let apiKey = "API_KEY"
     static let googleURL = "https://vision.googleapis.com/v1/images:annotate?key=\(apiKey)"
     static let session = URLSession.shared
     
